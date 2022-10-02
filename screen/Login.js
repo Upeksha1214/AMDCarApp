@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { NativeBaseProvider, Box ,Stack ,Input, Button } from "native-base";
 
-export default function Login(navigation) {
+export default function Login({navigation}) {
   return (
     <NativeBaseProvider>
         <Stack space={4} w="75%" maxW="300px" mx="auto" style={{marginTop:'10%'}}>
@@ -13,7 +13,7 @@ export default function Login(navigation) {
         </Stack>
         
         <Stack space={4} w="75%" maxW="300px" mx="auto" style={{marginTop:'5%' ,}}>
-        <Button colorScheme="success"  >
+        <Button colorScheme="success" onPress={()=>{navigation.navigate("DeatailsAdd")}} >
           Register</Button>
         </Stack>
     </NativeBaseProvider>

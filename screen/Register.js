@@ -4,11 +4,13 @@ import { NativeBaseProvider, Box ,Stack ,Input, Button } from "native-base";
 import * as Animatable from 'react-native-animatable';
 
 export default function Register({navigation}) {
+
   return (
+    
     <NativeBaseProvider>
 
         <Stack space={4} w="75%" maxW="300px" mx="auto"  style={{marginTop:'10%', radius:'40%'}}>
-        <Animatable.Text animation="slideInDown" iterationCount={6} direction="alternate"
+        <Animatable.Text animation="slideInDown" iterationCount={5} direction="alternate"
         style={{backgroundColor:'red',textAlign:'center',}}>
           Up and down you go</Animatable.Text>
         {/* <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ textAlign: 'center' }}>
