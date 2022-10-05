@@ -31,6 +31,29 @@ const openCamera=()=>{
 
    }
 
+   const openGalarey=()=>{
+    const options={
+         storageOptions : {
+            path : 'images',
+            mediaType : 'photo',
+
+         },
+         includeBase64 : true,
+    }   
+    launchImageLibrary(options , response=>{
+          
+           if(response.didCancel){
+              console.log("user cancelld image picker");
+           }else{
+             let source = {
+                uri: 'data:image/jpeg;base64,' + response.assets[0].base64
+            };
+               setImage(source)
+           }
+    });
+
+   }
+
   return (
     <NativeBaseProvider>
 
@@ -52,7 +75,7 @@ const openCamera=()=>{
                                 >Open Camera</Button>
                                 <Button
                                   onPress={()=>{
-                                    // imageGalary();
+                                    openGalarey();
                                   }}
                                  
                                 >Add Image</Button>
