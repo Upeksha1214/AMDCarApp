@@ -5,7 +5,7 @@ import {NativeBaseProvider,Box,Button,Flex,VStack,Center,HStack, TextArea,Input}
 
 
 
-export default function DeatailsAdd(navigation) {
+export default function DeatailsAdd({navigation}) {
 const[image,setImage]=useState('');
 
 const openCamera=()=>{
@@ -134,11 +134,12 @@ const openCamera=()=>{
                  </Box>
 
                  <Box height='40' flexDirection='column' alignItems='center'  >
-                                <Button width='60%' mb='4' mt='4'>Open Camera</Button>
+                                <Button width='60%' mb='4' mt='4' >Open Camera</Button>
                                 <Button width='60%' bg='red.500'>Add Image</Button>
                    </Box>
                    </ScrollView>
-
+                   <Button width='60%' bg='red.500'  onPress={()=>{navigation.navigate("ManageDetailsPage")}}>Add Image</Button>
+                  
      </Box>
         </NativeBaseProvider>
   )
