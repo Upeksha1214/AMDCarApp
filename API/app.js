@@ -4,7 +4,7 @@ const session=require('./routes/session')
 const user=require('./routes/crudOperations')
 const post=require('./routes/post')
 const manage=require('./routes/manage')
- const auth = require('./middleware/auth')
+const auth = require('./middleware/auth')
 
 const app=express()
 const port=4000;
