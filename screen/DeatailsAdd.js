@@ -149,7 +149,7 @@ export default function DeatailsAdd({ navigation }) {
               //  .catch((error) => {
               //       console.error(error);
               //  });
-              fetch('https://jsonplaceholder.typicode.com/todos/1')
+              fetch('http://192.168.1.6:4000/manage/')
                 .then(response => response.json())
                 .then(json => console.log(json))
             }}
