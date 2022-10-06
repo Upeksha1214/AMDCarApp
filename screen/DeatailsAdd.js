@@ -3,6 +3,8 @@ import { View, Text, ScrollView, Image } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { NativeBaseProvider, Box, Button, Flex, VStack, Center, HStack, TextArea, Input } from "native-base"
 
+import { BASE_URL } from "@env"
+
 
 
 export default function DeatailsAdd({ navigation }) {
@@ -134,7 +136,25 @@ export default function DeatailsAdd({ navigation }) {
           </Box>
 
           <Box height='40' flexDirection='column' alignItems='center'  >
-            <Button width='60%' mb='4' mt='4' >Open Camera</Button>
+            <Button width='60%' mb='4' mt='4' onPress={() => {
+
+              // fetch('http://192.168.1.6:4000/manage/addDetails',
+              // {method: 'POST'})
+
+              // .then((response) =>response.json())
+              // .then((json)=>{
+              //     console.log(json.message)
+
+              // })
+              //  .catch((error) => {
+              //       console.error(error);
+              //  });
+              fetch('https://jsonplaceholder.typicode.com/todos/1')
+                .then(response => response.json())
+                .then(json => console.log(json))
+            }}
+            >res</Button>
+
             <Button width='60%' bg='red.500'>Add Image</Button>
           </Box>
         </ScrollView>
