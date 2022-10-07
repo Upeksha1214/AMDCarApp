@@ -1,6 +1,6 @@
 import {SafeAreaView, StyleSheet, TextInput} from 'react-native'
 import React from 'react'
-import { NativeBaseProvider, Box ,Stack ,Input, Button } from "native-base";
+import { NativeBaseProvider, Box ,Stack ,Input, Button,Center,Heading,VStack,FormControl, } from "native-base";
 import * as Animatable from 'react-native-animatable';
 
 export default function Register({navigation}) {
@@ -17,23 +17,37 @@ export default function Register({navigation}) {
           ❤️</Animatable.Text> */}
           </Stack> 
         
-        <Stack space={4} w="75%" maxW="300px" mx="auto" style={{marginTop:'5%',}}>
-        <TextInput style={styles.input} placeholder="Gmail"keyboardType="email-address"/>
-        </Stack> 
-        <Stack space={4} w="75%" maxW="300px" mx="auto" style={{marginTop:'5%'}}>
-        <TextInput style={styles.input} placeholder="User Name"keyboardType="default"/>
-        </Stack>
-        <Stack space={4} w="75%" maxW="300px" mx="auto" style={{marginTop:'5%'}}>
-        <TextInput style={styles.input} placeholder="Passeword"keyboardType="visible-password"/>
-        </Stack>
-        <Stack space={4} w="75%" maxW="300px" mx="auto" style={{marginTop:'5%'}}>
-        <TextInput style={styles.input} placeholder="Confirom"keyboardType="visible-password"/>
-        </Stack>
-
-        <Stack space={4} w="75%" maxW="300px" mx="auto" style={{marginTop:'5%' ,}}>
-        <Button styles={styles.button} colorScheme="success" onPress={()=>{navigation.navigate("Login")}}>
-          Register</Button>
-        </Stack>
+          <Center w="100%">
+      <Box safeArea p="2" w="90%" maxW="290" py="8">
+        <Heading size="lg" color="coolGray.800" _dark={{
+        color: "warmGray.50"
+      }} fontWeight="semibold">
+          Welcome
+        </Heading>
+        <Heading mt="1" color="coolGray.600" _dark={{
+        color: "warmGray.200"
+      }} fontWeight="medium" size="xs">
+          Sign up to continue!
+        </Heading>
+        <VStack space={3} mt="5">
+          <FormControl>
+            <FormControl.Label>Email</FormControl.Label>
+            <Input />
+          </FormControl>
+          <FormControl>
+            <FormControl.Label>Password</FormControl.Label>
+            <Input type="password" />
+          </FormControl>
+          <FormControl>
+            <FormControl.Label>Confirm Password</FormControl.Label>
+            <Input type="password" />
+          </FormControl>
+          <Button mt="2" colorScheme="indigo" onPress={()=>{navigation.navigate("Login")}}>
+            Sign up
+          </Button>
+        </VStack>
+      </Box>
+    </Center>
           
     </NativeBaseProvider>
     
