@@ -3,15 +3,21 @@ import { View, Text, ScrollView, Image } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { NativeBaseProvider, Box, Button, Flex, VStack, Center, HStack, TextArea, Input } from "native-base"
 
-import { BASE_URL } from "@env"
+import CustomeAlert from '../components/alert/CustomerAlert';
+
 
 
 
 export default function DeatailsAdd({ navigation }) {
 
+  const[change,setChage]=useState(false);
   const [title, setTitle] = useState('');
   const [desc, setDesc] = useState('')
   const [image, setImage] = useState('');
+
+  const delayChageTime=()=>{
+    setChage(false);
+}
 
   const openCamera = () => {
     const options = {
@@ -147,17 +153,42 @@ export default function DeatailsAdd({ navigation }) {
 
           <Box height='40' flexDirection='column' alignItems='center'  >
             <Button width='60%' mb='4' mt='4' onPress={() => {
-              fetch('http://192.168.1.6:4000/manage/addDetails')
-                .then(response => response.json())
-                .then(json => console.log(json))
-                .catch(err => alert(err))
+              fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                headers: {
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                      "title" : {title},
+                      "desc" : {desc},
+                      "image" : {image}
+                })
+              })
+              .then((response) => response.json())
+              .then((json) => {
+                        setChage(true)
+                        setTimeout(delayChageTime,3000)
+                    
+               })
+               .catch((err)=>{
+                   alert(err)
+               })
             }}
-            >res</Button>
+            >Save Details</Button>
 
-            <Button width='60%' bg='red.500'>Add Image</Button>
+            <Button width='60%' bg='red.500'>Cancelld</Button>
+
           </Box>
+          {/* <Box height='20' flexDirection='column' alignItems='center' >
+            <Button width='60%' bg='darkblue' onPress={() => { navigation.navigate("ManageDetailsPage") }} >Manage Details</Button></Box> */}
         </ScrollView>
-        <Button width='60%' bg='red.500' onPress={() => { navigation.navigate("ManageDetailsPage") }}>Manage Details</Button>
+        
+        <CustomeAlert 
+          bgcolor={"green"}
+          isAnimate={change}
+          text="Details Addedd Completed"
+       />
 
       </Box>
     </NativeBaseProvider>
