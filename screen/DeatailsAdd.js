@@ -8,6 +8,9 @@ import { BASE_URL } from "@env"
 
 
 export default function DeatailsAdd({ navigation }) {
+
+  const [title, setTitle] = useState('');
+  const [desc, setDesc] = useState('')
   const [image, setImage] = useState('');
 
   const openCamera = () => {
@@ -113,45 +116,41 @@ export default function DeatailsAdd({ navigation }) {
 
             <Box bg='white' rounded='xl' height='90%' width='90%' alignItems='center' justifyContent='space-around'>
 
-              <Input mb='4' shadow={2} _light={{
-                bg: "coolGray.100",
-                _hover: {
-                  bg: "coolGray.200"
-                },
-                _focus: {
-                  bg: "coolGray.200:alpha.70"
-                }
-              }} _dark={{
-                bg: "coolGray.800",
-                _hover: {
-                  bg: "coolGray.900"
-                },
-                _focus: {
-                  bg: "coolGray.900:alpha.70"
-                }
-              }} placeholder="Title" />
-              <TextArea width='100%' height='100%' placeholder="Text Area Placeholder" />
+              <Input
+                onChangeText={text => setTitle(text)}
+                value={title}
+
+                mb='4' shadow={2} _light={{
+                  bg: "coolGray.100",
+                  _hover: {
+                    bg: "coolGray.200"
+                  },
+                  _focus: {
+                    bg: "coolGray.200:alpha.70"
+                  }
+                }} _dark={{
+                  bg: "coolGray.800",
+                  _hover: {
+                    bg: "coolGray.900"
+                  },
+                  _focus: {
+                    bg: "coolGray.900:alpha.70"
+                  }
+                }} placeholder="Title" />
+              <TextArea
+                onChangeText={desc => setDesc(desc)}
+                value={desc}
+                width='100%' height='100%' placeholder="Text Area Placeholder" />
 
             </Box>
           </Box>
 
           <Box height='40' flexDirection='column' alignItems='center'  >
             <Button width='60%' mb='4' mt='4' onPress={() => {
-
-              // fetch('http://192.168.1.6:4000/manage/addDetails',
-              // {method: 'POST'})
-
-              // .then((response) =>response.json())
-              // .then((json)=>{
-              //     console.log(json.message)
-
-              // })
-              //  .catch((error) => {
-              //       console.error(error);
-              //  });
-              fetch('http://192.168.1.6:4000/manage/')
+              fetch('http://192.168.1.6:4000/manage/addDetails')
                 .then(response => response.json())
                 .then(json => console.log(json))
+                .catch(err => alert(err))
             }}
             >res</Button>
 
