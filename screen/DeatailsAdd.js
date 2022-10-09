@@ -180,7 +180,7 @@ export default function DeatailsAdd({ navigation }) {
             <Button width='60%' bg='red.500'>Cancelld</Button>
 
           </Box>
-          <Box height='20' flexDirection='column' alignItems='center' >
+          <Box height='40' flexDirection='column' alignItems='center' >
             <Button width='60%' bg='darkblue' onPress={() => { navigation.navigate("ManageDetailsPage") }} >Manage Details</Button></Box>
         </ScrollView>
         
