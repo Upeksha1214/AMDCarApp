@@ -55,7 +55,10 @@ export default function Login({navigation}) {
           </FormControl>
           <Button mt="2" colorScheme="indigo"
            onPress={()=>{
-            var myHeaders = new Headers();
+            
+            if(username != " " && password !=""){
+
+              var myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
                 
                 var raw = JSON.stringify({
@@ -80,6 +83,10 @@ export default function Login({navigation}) {
                  
                 })
                   .catch(error => alert('error', error));
+            }else{
+              alert("Enter the User and Password")
+            }
+            
             
             
             }}>
